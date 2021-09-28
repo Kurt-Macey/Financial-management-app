@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+{% if current_user.admin == False%}
+{% if current_user.confirmed %}
+{% if current_user.is_authenticated %}
+<h1>Hello {{ current_user.username }} </h1>
+<h1>Display balace: £{{ user.accountBalance }} </h1>
+
+{% if percent > 0 %}
+<h1>Savings goal: £{{ user.goal }} </h1>
+<h1> You have saved {{ percent }}% of your goal</h1>
+{% endif %}
+
+<div class="homepage">
+<div class="table table-sm table-hover table-bordered table-striped" >
+Deposits:
+<tr>
+<table style="border: 1px solid black;">
+  <th style="padding: 15px;">Date</th>
+  <th style="padding: 15px;">Sender AN</th>
+  <th style="padding: 15px;">Reciever AN</th>
+  <th style="padding: 15px;">Amount</th>
+  <th style="padding: 15px;">Transaction ID</th>
+ </tr>
+
+{% for transaction in transaction2 %}
+<tr>
+  <td style="padding: 15px;">{{transaction.pub_date}}</td>
+  <td style="padding: 15px;">{{transaction.parent_id}}</td>
+  <td style="padding: 15px;">{{transaction.recipient_id}}</td>
+  <td style="padding: 15px;">£{{transaction.amount}}</td>
+  <td style="padding: 15px;">{{transaction.id}}</td>
+  {% endfor %}
+  </tr>
+ </table>
+</div>
+<div class="table table-sm table-hover table-bordered table-striped" >
+ Withdrawels:
+ <tr>
+<table style="border: 1px solid black;">
+  <th style="padding: 15px;">Date</th>
+  <th style="padding: 15px;">Sender AN</th>
+  <th style="padding: 15px;">Reciever AN</th>
+  <th style="padding: 15px;">Amount</th>
+  <th style="padding: 15px;">Transaction ID</th>
+ </tr>
+{% for transaction in transaction1 %}
+
+<tr>
+  <td style="padding: 15px;">{{transaction.pub_date}}</td>
+  <td style="padding: 15px;">{{transaction.parent_id}}</td>
+  <td style="padding: 15px;">{{transaction.recipient_id}}</td>
+  <td style="padding: 15px;">£{{transaction.amount}}</td>
+  <td style="padding: 15px;">{{transaction.id}}</td>
+
+  {% endfor %}
+  </tr>
+ </table>
+ </div>
+
+{% endif %}
+{% endif %}
+{% endif %}
+{% endblock content %}
+
+</div>

@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+<form method="GET" action="{{ url_for('home') }}">
+{{form.hidden_tag()}}
+<fieldset class="form-group">
+<form class="form-group">
+	{{form.example.label}}
+    {{ form.example }}
+</form>
+
+<div class="form-group">
+{{form.submit(class="btn btn-outline-info")}}
+</div>
+</form>
+{% endblock content %}

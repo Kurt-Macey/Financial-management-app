@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Easybank</title>
+  </head>
+  <body>
+    <div class="container">
+      <section class="why-us">
+        <h1>Why choose us?</h1>
+        <p
+          >We're not your typical bank. Here, our aims are to enrich our users, not our selves. We provide a series of features that help you save money.</p
+        >
+      </section>
+      <section class="features-section">
+        <div class="feature-item">
+          <h1>Bank online</h1>
+          <p
+            >Our modern web and mobile<br />
+            applications allow you to keep<br />
+            track of your finances whereever<br />
+            you are in the world.</p
+          >
+        </div>
+        <div class="feature-item">
+          <h1>Set spending limits</h1>
+          <p
+            >See exactly where your money<br />
+            goes every month.Recieve<br />
+            notifications when you're close to<br />
+            hitting your limits.</p >
+          </p></div
+        >
+
+        <div class="feature-item">
+          <h1>Use our "split" saving feature</h1>
+          <p
+            >Do you disregard your lose change?<br />
+            Well, we're here to tell you that it's<br />
+            just as valuable as the rest of your earnings.<br />
+            We beliee that every little adds up to a lot. <br />
+			Use out split feature to start saving your money.</p
+          >
+        </div>
+        <div class="feature-item">
+          <h1>Set goals</h1>
+          <p
+            >Set fonancial goals and save<br />
+            up for the things you love to do.<br />
+            Recieve notification and visual aids<br />
+            to help you save your money.</p
+          >
+        </div>
+      </section>
+      <section class="blog-section">
+        <h1>Meet our customers</h1>
+        <div class="article-container">
+          <div class="article">
+            <img src="{{url_for('static', filename='img/person.jpg')}}" alt="" />
+         <div class="content">
+			<h4>Emily, a recent graduate</h4>
+            </div>
+          </div>
+		  <div class="content">
+			<p>"I used to think that saving money was impossible with my budged.<br/>
+			Thanks to this app i'm able to save money i never knew i had. <br/> 
+			I can't wait to save for my next venture!"</p>
+            </div>
+        </div>
+      </section>
+    </div>
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="social-container">
+          <img src="./images/icon-facebook.svg" alt="" />
+          <img src="./images/icon-instagram.svg" alt="" />
+          <img src="./images/icon-twitter.svg" alt="" />
+          <img src="./images/icon-pinterest.svg" alt="" />
+        </div>
+        <div class="menu">
+          <a href="#">About us</a>
+          <a href="#">Contact us</a>
+          <a href="#">Blog</a>
+        </div>
+        <div class="menu">
+          <a href="#">Carriers</a>
+          <a href="#">Support</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+        <button>Request Invite</button>
+      </div>
+    </footer>
+  </body>
+</html>
+{% endblock content %}

@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block content %}
+{% if current_user.admin == False%}
+<div class="homepage">
+<form method="POST" action="">
+{{form.hidden_tag()}}
+<fieldset class="form-group">
+<legend class="border-bottom mb-4">Transaction</legend>
+
+<div class="form-group">
+{{form.amount.label(class="form-control-label")}}
+{% if form.amount.errors %}
+{{form.amount(class="form-control form-control-lg is-invalid")}}
+
+<div class="invalid-feedback">
+{%for error in form.amount.errors%}
+<span>{{ error }}</span>
+{% endfor %}
+</div>
+{% else %}
+{{form.amount(class="form-control form-control-lg")}}
+{% endif %}
+</div>
+
+
+<div class="form-group">
+{{form.submit(class="btn btn-outline-info")}}
+</div>
+</form>
+{% endif %}
+{% endblock content %}
+</div>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+

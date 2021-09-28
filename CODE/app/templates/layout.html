@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Home page</title>
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"/>
+<link rel="stylesheet" type ="text/css" href="{{ url_for('static', filename='main.css') }}">
+</head>
+
+<body>
+<div class="jumbotron" style="margin-bottom: 0px">
+<h1> My Bank </h1>
+<p>GIVE ME YOUR MONEY.</p>
+</div>
+
+ <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+ 
+ <button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
+ <span class="navbar-toggler-icon"></span>
+ </button>
+ 
+ <div class="collapse navbar-collapse navbar-fixed-top" id="collapse_target">
+ <span class="navbar-text"><a class="nav-link" href="{{url_for('home')}}">My Bank</a></span>
+ <ul class="navbar-nav">
+   
+  {% if current_user.is_authenticated %}
+   <li class="nav-item">
+ <a class="nav-link" href="{{url_for('homehome')}}"> Home </a>
+ </li>
+ 
+ <div class="dropdown show">
+
+  <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Current Account
+  </a>
+  
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="{{url_for('home')}}">View current account</a>
+    <a class="dropdown-item" href="{{url_for('transaction')}}">Create transaction</a>
+    <a class="dropdown-item" href="{{url_for('createAccount')}}">Create extra current account</a>
+	<a class="dropdown-item" href="{{url_for('split')}}">Activate split feature</a>
+  </div>
+  </div>
+  
+   <div class="dropdown show">
+  <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Savings Account
+  </a>
+  
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="{{url_for('savings')}}">View savings account</a>
+    <a class="dropdown-item" href="{{url_for('deposit')}}">Deposit money</a>
+    <a class="dropdown-item" href="{{url_for('withdraw')}}">Withdraw money</a>
+	<a class="dropdown-item" href="{{url_for('setGoal')}}">Set goal</a>
+	<a class="dropdown-item" href="{{url_for('resetGoal')}}">reset goal</a>
+  </div>
+  </div>
+  <li class="nav-item">
+ <a class="nav-link" href="{{url_for('logout')}}"> Logout </a>
+ </li>
+ {%if current_user.admin == True%}
+ <li class="nav-item">
+ <a class="nav-link" href="{{url_for('admin.index')}}"> Admin panel </a>
+ </li>
+  {% endif %}
+ {% else %}
+ <li class="nav-item">
+ <a class="nav-link" href="{{url_for('homehome')}}"> Home </a>
+ </li>
+  <li class="nav-item">
+ <a class="nav-link" href="{{url_for('login')}}"> login </a>
+ </li>
+ <li class="nav-item">
+ <a class="nav-link" href="{{url_for('register')}}"> Register </a>
+ </li>
+ {% endif %}
+ </ul>
+ </div>
+ </nav>
+ 
+<div class="" style="padding-left:30%; padding-right:30%; padding-top:1%;">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+	  <div class="alert alert-{{category}}"  style="text-align: center;" role="alert">	
+      <ul class=flashes>
+      <div>
+      <span>{{message}} </span>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+      </button>
+      </div>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+  </div>
+ </div>
+   
+ 
+{% block content %}
+{% endblock content %}
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+
+
+</html>
